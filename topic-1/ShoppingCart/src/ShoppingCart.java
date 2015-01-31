@@ -13,10 +13,12 @@ public class ShoppingCart {
 	private PayalPaymentVisitor ppPaymentVisitor;
 	private CCPaymentVisitor ccPaymentVisitor;
 	private DisplayItemVisitor infoItemVisitor;
+	private MailListVisitor mailListVisitor;
 
 	public ShoppingCart() {
 		this.items = new ArrayList<IItem>();
 		this.offer = new Offer("My offer", 60000.00);
+		this.mailListVisitor = new MailListVisitor();
 		this.priceVisitor = new PriceVisitor();
 		this.ccPaymentVisitor = new CCPaymentVisitor();
 		this.ppPaymentVisitor = new PayalPaymentVisitor();
@@ -26,6 +28,7 @@ public class ShoppingCart {
 
 	public void addItem(IItem item) {
 		this.items.add(item);
+		item.accept(mailListVisitor);
 	}
 
 	public double getTotalPrice() {

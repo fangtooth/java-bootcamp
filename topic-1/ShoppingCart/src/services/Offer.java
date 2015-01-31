@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import implementations.visitors.DisplayItemVisitor;
 import interfaces.*;
 
-public class Offer {
+public class Offer implements IService {
 	private String name;
 	private double price;
 	private DisplayItemVisitor infoItemVisitor;
@@ -20,12 +20,26 @@ public class Offer {
 		this.offers = new ArrayList<Offer>();
 	}
 
+	@Override
+	public void accept(IServiceVisitor sv) {
+		// TODO Auto-generated method stub
+
+	}
+
 	public String getName() {
 		return name;
 	}
 
 	public double getPrice() {
 		return price;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public void addItem(IItem product) {
